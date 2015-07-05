@@ -1,0 +1,27 @@
+{
+    "name": "curiouscoder/telegram-php-bot",
+    "description": "Telegram Bot API written in PHP",
+    "keywords": ["telegram-bot", "telegram", "bot", "api"],
+    "type": "library",
+    "require": {
+        "php": ">=5.4",
+	"nesbot/carbon": "~1.14",
+	"guzzlehttp/guzzle": "5.3.0"
+    },
+    "require-dev": {
+    },
+    "autoload": {
+        "psr-4": {
+            "CuriousCoder\\TelegramBot\\": "src"
+        }
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vinay Kumar",
+            "email": "vinaykumar1989@gmail.com",
+	    "role": "Developer"
+        }
+    ],
+    "minimum-stability": "dev"
+}
