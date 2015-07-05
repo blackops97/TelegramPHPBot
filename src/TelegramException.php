@@ -10,7 +10,6 @@
 
 namespace CuriousCoder\TelegramBot;
 
-class TelegramException extends \Exception
-{
+class TelegramException extends \Exception{
 	//Nothing special
 }
