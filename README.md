@@ -44,6 +44,22 @@ To send a text message
 $response = $telegram->sendMessage('CHAT_ID','Hello!');
 print_r($response);
 ```
+###Extra info
+By default video, audio, sticker and photo formats are preset. You can view or add formats using Config class
+
+```php
+$config = new Config();
+
+$config->getAudioFormats();
+$config->setAudioFormats(['mp3']);
+
+$config->getVideoFormats();
+$config->setVideoFormats(['avi']);
+
+$config->getPhotoFormats();
+$config->setPhotoFormats(['png','jpg']);
+
+```
 
 ## Contributing
 
