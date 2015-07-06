@@ -2,3 +2,5 @@ vendor
 index.php
 test.php
 composer.lock
+src/Exception/HttpException.php
+src/Exception/TelegramException.php
