@@ -15,7 +15,7 @@ use CuriousCoder\TelegramBot\TelegramBot;
 use CuriousCoder\TelegramBot\Config\Config;
 ```
 
-Step 3: Create new instance of Config class and set your api key
+Step 3: Create new instance of Config class and set your api key. Check [botfather](https://core.telegram.org/bots#botfather) to register your app.
 
 ```php
 $config = new Config();
