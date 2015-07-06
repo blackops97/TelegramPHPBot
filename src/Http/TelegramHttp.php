@@ -59,7 +59,7 @@ Class TelegramHttp{
 				});
 			*/
 		}catch(\Exception $e){
-			echo('<br><strong>'.$e->getMessage().'</strong>');
+			echo($e->getMessage());
 		}
 	}
 
