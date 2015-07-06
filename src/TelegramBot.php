@@ -14,6 +14,7 @@ namespace CuriousCoder\TelegramBot;
 use CuriousCoder\TelegramBot\Http\TelegramHttp;
 use CuriousCoder\TelegramBot\Config\Config;
 use CuriousCoder\TelegramBot\Helper;
+use CuriousCoder\TelegramBot\Exception\FileFormatException;
 
 
 Class TelegramBot {
@@ -100,12 +101,18 @@ Class TelegramBot {
 	*/
 	public function sendPhoto($chat_id, $photo, $caption = null, $reply_to_message_id = null, $reply_markup = null){
 
-		if($this->Helper->CheckFile($sticker, $this->Config->getPhotoFormats()) === true )
+		try{
+			if($this->Helper->CheckFile($sticker, $this->Config->getPhotoFormats()) === true )
 
-		{
-			$params['body'] = compact('chat_id', 'photo', 'caption', 'reply_to_message_id', 'reply_markup');
+			{
+				$params['body'] = compact('chat_id', 'photo', 'caption', 'reply_to_message_id', 'reply_markup');
 
-			return $this->TelegramHttp->request('POST',$this->Config->getRequestUrl().'/sendPhoto',$params);
+				return $this->TelegramHttp->request('POST',$this->Config->getRequestUrl().'/sendPhoto',$params);
+			}else{
+				throw new FileFormatException("Unable to send photo. Supported Formats: ",null,$this->Config->getStickerFormats());
+			}
+		}catch(FileFormatException $e){
+			$e->showMessage();
 		}
 	}
 	/**
@@ -122,11 +129,17 @@ Class TelegramBot {
 	*/
 	public function sendAudio($chat_id, $audio, $reply_to_message_id = null, $reply_markup = null)
 	{
-		if($this->Helper->CheckFile($sticker, $this->Config->getAudioFormats()) === true ){
+		try{
+			if($this->Helper->CheckFile($sticker, $this->Config->getAudioFormats()) === true ){
 
-			$params = compact('chat_id', 'audio', 'reply_to_message_id', 'reply_markup');
+				$params = compact('chat_id', 'audio', 'reply_to_message_id', 'reply_markup');
 
-			return $this->TelegramHttp->request('POST',$this->Config->getRequestUrl().'/sendAudio',$params);
+				return $this->TelegramHttp->request('POST',$this->Config->getRequestUrl().'/sendAudio',$params);
+			}else{
+				throw new FileFormatException("Unable to send audio. Supported Formats: ",null,$this->Config->getStickerFormats());
+			}
+		}catch(FileFormatException $e){
+			$e->showMessage();
 		}
 	}
 
@@ -166,11 +179,17 @@ Class TelegramBot {
 	public function sendSticker($chat_id, $sticker, $reply_to_message_id = null, $reply_markup = null)
 	{
 
-		if($this->Helper->CheckFile($sticker, $this->Config->getStickerFormats()) === true ){
+		try{
+				if($this->Helper->CheckFile($sticker, $this->Config->getStickerFormats()) === true ){
 
-			$params = compact('chat_id', 'sticker', 'reply_to_message_id', 'reply_markup');
+				$params = compact('chat_id', 'sticker', 'reply_to_message_id', 'reply_markup');
 
-			return $this->TelegramHttp->request('POST',$this->Config->getRequestUrl().'/sendSticker',$params);
+				return $this->TelegramHttp->request('POST',$this->Config->getRequestUrl().'/sendSticker',$params);
+			}else{
+				throw new FileFormatException("Unable to send sticker. Supported Formats: ",null,$this->Config->getStickerFormats());
+			}
+		}catch(FileFormatException $e){
+			$e->showMessage();
 		}
 	}
 
@@ -189,11 +208,17 @@ Class TelegramBot {
 	*/
 	public function sendVideo($chat_id, $video, $reply_to_message_id = null, $reply_markup = null)
 	{
-		if($this->Helper->CheckFile($sticker, $this->Config->getVideoFormats()) === true ){
+		try{
+			if($this->Helper->CheckFile($sticker, $this->Config->getVideoFormats()) === true ){
 
-			$params = compact('chat_id', 'video', 'reply_to_message_id', 'reply_markup');
+				$params = compact('chat_id', 'video', 'reply_to_message_id', 'reply_markup');
 
-			return $this->TelegramHttp->request('POST',$this->Config->getRequestUrl().'/sendVideo',$params);
+				return $this->TelegramHttp->request('POST',$this->Config->getRequestUrl().'/sendVideo',$params);
+			}else{
+				throw new FileFormatException("Unable to send video. Supported Formats: ",null,$this->Config->getStickerFormats());
+			}
+		}catch(FileFormatException $e){
+			$e->showMessage();
 		}
 	}
 
