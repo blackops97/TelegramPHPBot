@@ -305,17 +305,16 @@ Class TelegramBot {
 	*/
 	public function setWebhook($url)
 	{
-		if (filter_var($url, FILTER_VALIDATE_URL) === false) {
-			//throw new TelegramException('Invalid URL Provided');
+
+		if($this->Helper->checkUrl($url) === true){
+
+			$params['body'] = compact('url');
+
+			return $this->TelegramHttp->request('POST',$this->Config->getRequestUrl().'/setWebhook',$params);
+
+		}else{
+			return "Url not valid!";
 		}
-
-		if (parse_url($url, PHP_URL_SCHEME) !== 'https') {
-			//throw new TelegramException('Invalid URL, should be a HTTPS url.');
-		}
-
-		$params['body'] = compact('url');
-
-		return $this->TelegramHttp->request('POST',$this->Config->getRequestUrl().'/setWebhook',$params);
 	}
 
 	/**
