@@ -102,14 +102,14 @@ Class TelegramBot {
 	public function sendPhoto($chat_id, $photo, $caption = null, $reply_to_message_id = null, $reply_markup = null){
 
 		try{
-			if($this->Helper->CheckFile($sticker, $this->Config->getPhotoFormats()) === true )
+			if($this->Helper->CheckFile($photo, $this->Config->getPhotoFormats()) === true )
 
 			{
 				$params['body'] = compact('chat_id', 'photo', 'caption', 'reply_to_message_id', 'reply_markup');
 
 				return $this->TelegramHttp->request('POST',$this->Config->getRequestUrl().'/sendPhoto',$params);
 			}else{
-				throw new FileFormatException("Unable to send photo. Supported Formats: ",null,$this->Config->getStickerFormats());
+				throw new FileFormatException("Unable to send photo. Supported Formats: ",null,$this->Config->getPhotoFormats());
 			}
 		}catch(FileFormatException $e){
 			$e->showMessage();
@@ -130,13 +130,13 @@ Class TelegramBot {
 	public function sendAudio($chat_id, $audio, $reply_to_message_id = null, $reply_markup = null)
 	{
 		try{
-			if($this->Helper->CheckFile($sticker, $this->Config->getAudioFormats()) === true ){
+			if($this->Helper->CheckFile($audio, $this->Config->getAudioFormats()) === true ){
 
 				$params = compact('chat_id', 'audio', 'reply_to_message_id', 'reply_markup');
 
 				return $this->TelegramHttp->request('POST',$this->Config->getRequestUrl().'/sendAudio',$params);
 			}else{
-				throw new FileFormatException("Unable to send audio. Supported Formats: ",null,$this->Config->getStickerFormats());
+				throw new FileFormatException("Unable to send audio. Supported Formats: ",null,$this->Config->getAudioFormats());
 			}
 		}catch(FileFormatException $e){
 			$e->showMessage();
@@ -209,13 +209,13 @@ Class TelegramBot {
 	public function sendVideo($chat_id, $video, $reply_to_message_id = null, $reply_markup = null)
 	{
 		try{
-			if($this->Helper->CheckFile($sticker, $this->Config->getVideoFormats()) === true ){
+			if($this->Helper->CheckFile($video, $this->Config->getVideoFormats()) === true ){
 
 				$params = compact('chat_id', 'video', 'reply_to_message_id', 'reply_markup');
 
 				return $this->TelegramHttp->request('POST',$this->Config->getRequestUrl().'/sendVideo',$params);
 			}else{
-				throw new FileFormatException("Unable to send video. Supported Formats: ",null,$this->Config->getStickerFormats());
+				throw new FileFormatException("Unable to send video. Supported Formats: ",null,$this->Config->getVideoFormats());
 			}
 		}catch(FileFormatException $e){
 			$e->showMessage();
