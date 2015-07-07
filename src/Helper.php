@@ -9,6 +9,7 @@ namespace CuriousCoder\TelegramBot;
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+use CuriousCoder\TelegramBot\Exception\FileFormatException;
 
 Class Helper{
 
@@ -21,8 +22,10 @@ Class Helper{
 				return true;
 			}
 
+			throw new FileFormatException("Unsupported format. Allowed formats: ",null,$format);
 		}
-			return false;
+
+		throw new FileFormatException("Check file path: ".$path,null,[]);
 	}
 
 	public function checkUrl($url){
