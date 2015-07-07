@@ -19,11 +19,17 @@ Class Helper{
 			if(in_array(pathinfo($path,PATHINFO_EXTENSION),$format))
 			{
 				return true;
-			}else{
-				return "Not Accepted File Etension";
 			}
+
 		}
-		
+			return false;
+	}
+
+	public function checkUrl($url){
+		if (filter_var($url, FILTER_VALIDATE_URL) === true || parse_url($url, PHP_URL_SCHEME) === 'https') {
+			return true;
+		}
+		return false;
 	}
 
 }
