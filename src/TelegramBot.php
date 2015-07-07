@@ -239,7 +239,7 @@ Class TelegramBot {
 	{
 		$params = compact('chat_id', 'latitude', 'longitude', 'reply_to_message_id', 'reply_markup');
 
-		return $this->TelegramHttp->request('POST',$this->RequestUrl.'/sendLocation',$params);
+		return $this->TelegramHttp->request('POST',$this->Config->getRequestUrl().'/sendLocation',$params);
 	}
 
 	/**
@@ -271,7 +271,7 @@ Class TelegramBot {
 
 			$params['body'] = compact('chat_id', 'action');
 
-			return $this->TelegramHttp->request('POST',$this->RequestUrl.'/sendChatAction',$params);
+			return $this->TelegramHttp->request('POST',$this->Config->getRequestUrl().'/sendChatAction',$params);
 		}
 
 		throw new TelegramException('Invalid Action! Accepted value: '.implode(', ', $validActions));
@@ -291,7 +291,7 @@ Class TelegramBot {
 	{
 		$params['body'] = compact('user_id', 'offset', 'limit');
 
-		return $this->TelegramHttp->request('POST',$this->RequestUrl.'/getUserProfilePhotos',$params);
+		return $this->TelegramHttp->request('POST',$this->Config->getRequestUrl().'/getUserProfilePhotos',$params);
 	}
 
 	/**
@@ -315,7 +315,7 @@ Class TelegramBot {
 
 		$params['body'] = compact('url');
 
-		return $this->TelegramHttp->request('POST',$this->RequestUrl.'/setWebhook',$params);
+		return $this->TelegramHttp->request('POST',$this->Config->getRequestUrl().'/setWebhook',$params);
 	}
 
 	/**
@@ -329,7 +329,7 @@ Class TelegramBot {
 
 		$params['body'] = compact('url');
 
-		return $this->TelegramHttp->request('POST',$this->RequestUrl.'/setWebhook',$params);
+		return $this->TelegramHttp->request('POST',$this->Config->getRequestUrl().'/setWebhook',$params);
 	}
 
 	/**
@@ -347,7 +347,7 @@ Class TelegramBot {
 
 		$params['body'] = compact('offset', 'limit', 'timeout');
 
-		return $this->TelegramHttp->request('POST',$this->RequestUrl.'/getUpdates',$params);
+		return $this->TelegramHttp->request('POST',$this->Config->getRequestUrl().'/getUpdates',$params);
 
 	}
 
