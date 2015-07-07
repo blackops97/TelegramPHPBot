@@ -108,8 +108,6 @@ Class TelegramBot {
 				$params['body'] = compact('chat_id', 'photo', 'caption', 'reply_to_message_id', 'reply_markup');
 
 				return $this->TelegramHttp->request('POST',$this->Config->getRequestUrl().'/sendPhoto',$params);
-			}else{
-				throw new FileFormatException("Unable to send photo. Supported Formats: ",null,$this->Config->getPhotoFormats());
 			}
 		}catch(FileFormatException $e){
 			$e->showMessage();
@@ -135,8 +133,6 @@ Class TelegramBot {
 				$params = compact('chat_id', 'audio', 'reply_to_message_id', 'reply_markup');
 
 				return $this->TelegramHttp->request('POST',$this->Config->getRequestUrl().'/sendAudio',$params);
-			}else{
-				throw new FileFormatException("Unable to send audio. Supported Formats: ",null,$this->Config->getAudioFormats());
 			}
 		}catch(FileFormatException $e){
 			$e->showMessage();
@@ -185,8 +181,6 @@ Class TelegramBot {
 				$params = compact('chat_id', 'sticker', 'reply_to_message_id', 'reply_markup');
 
 				return $this->TelegramHttp->request('POST',$this->Config->getRequestUrl().'/sendSticker',$params);
-			}else{
-				throw new FileFormatException("Unable to send sticker. Supported Formats: ",null,$this->Config->getStickerFormats());
 			}
 		}catch(FileFormatException $e){
 			$e->showMessage();
@@ -214,8 +208,6 @@ Class TelegramBot {
 				$params = compact('chat_id', 'video', 'reply_to_message_id', 'reply_markup');
 
 				return $this->TelegramHttp->request('POST',$this->Config->getRequestUrl().'/sendVideo',$params);
-			}else{
-				throw new FileFormatException("Unable to send video. Supported Formats: ",null,$this->Config->getVideoFormats());
 			}
 		}catch(FileFormatException $e){
 			$e->showMessage();
