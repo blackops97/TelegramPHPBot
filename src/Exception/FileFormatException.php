@@ -17,7 +17,7 @@ class FileFormatException extends \Exception{
 
   protected $mesage;
 
-  public function __construct($message, Exception $previous = null, $options = array('params')) {
+  public function __construct($message, Exception $previous = null, $options = []) {
       parent::__construct($message, $previous);
       $this->allowedFormats = $options;
       $this->message = $message;
