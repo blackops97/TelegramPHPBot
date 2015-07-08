@@ -4,13 +4,17 @@ Telegram Bot PHP API
 
 ## Quick Start
 
-Step 1: Clone the repo.
+### Installation
 
-Step 2: In your file add the line
+Step 1: By using Composer
+
+```cli
+$ composer require curiouscoder/telegram-php-bot
+```
+
+Step 2: Assuming composer's autoloader is made use of
 
 ```php
-require 'vendor/autoload.php';
-
 use CuriousCoder\TelegramBot\TelegramBot;
 use CuriousCoder\TelegramBot\Config\Config;
 ```
