@@ -24,7 +24,7 @@ composer.json file
 }
 ```
 
-Step 2: Assuming composer's autoloader is made use of. [```cli require 'vendor/autoload.php';```]
+Step 2: Assuming composer's autoloader is made use of. [```require 'vendor/autoload.php';```]
 
 ```php
 use CuriousCoder\TelegramBot\TelegramBot;
