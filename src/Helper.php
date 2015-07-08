@@ -15,6 +15,14 @@ Class Helper{
 
 	public function CheckFile($path,array $format){
 
+		if(!is_array($format)){
+			throw new FileFormatException("Format should be passed in array.",null);
+		}
+
+		if(!is_string($path)){
+			throw new FileFormatException("Path should be string.",null);
+		}
+
 		if(file_exists($path) && is_readable($path)){
 
 			if(in_array(pathinfo($path,PATHINFO_EXTENSION),$format))
@@ -25,7 +33,7 @@ Class Helper{
 			throw new FileFormatException("Unsupported format. Allowed formats: ",null,$format);
 		}
 
-		throw new FileFormatException("Check file path: ".$path,null,[]);
+		throw new FileFormatException("Check file path: ".$path,null);
 	}
 
 	public function checkUrl($url){
