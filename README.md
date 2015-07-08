@@ -12,7 +12,19 @@ Step 1: By using Composer
 $ composer require curiouscoder/telegram-php-bot
 ```
 
-Step 2: Assuming composer's autoloader is made use of
+or
+
+composer.json file
+
+```cli
+{
+    "require": {
+        "curiouscoder/telegram-php-bot": "dev-master"
+    }
+}
+```
+
+Step 2: Assuming composer's autoloader is made use of. [```cli require 'vendor/autoload.php';```]
 
 ```php
 use CuriousCoder\TelegramBot\TelegramBot;
