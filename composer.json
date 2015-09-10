@@ -22,5 +22,5 @@
 	    "role": "Developer"
         }
     ],
-    "minimum-stability": "alpha"
+    "minimum-stability": "dev"
 }
